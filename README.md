@@ -10,7 +10,7 @@ In place of `papercall`, `oreilly`, `opensource`, `lanyrd` and `linuxfoundation`
 [lanyrd.com](http://lanyrd.com/topics/open-source) and
 [linuxfoundation.org](http://events.linuxfoundation.org) has been implemented with Scrapy.)
 
-This will create a info.json file in your working directory. Here's a sample of it's contents (formatted for better readability):
+This will create a "info.json" file in your working directory. Here's a sample of it's contents (formatted for better readability):
 ```
 [
     {
