@@ -1,5 +1,5 @@
 """Here are spider declarations for conference-info scraping."""
-from constants import *  # Gets metadata info.
+from .conf_constants import *  # Gets metadata info.
 from lxml import html
 import scrapy
 
