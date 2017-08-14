@@ -3,7 +3,7 @@
 from bs4 import BeautifulSoup  # Eventually migrate to lxml.
 from lxml import html
 import scrapy
-from .hack_constants import *  # Imports metadata.
+from hack_conf.items import HackData  # Imports metadata.
 import re
 
 #think about converting time from a string to a time object
@@ -30,7 +30,7 @@ class HackathonDotComSpider(scrapy.Spider):
         city_hacks = block.xpath('.//div[@class="ht-eb-card"]')
 
         def parse_hackathonDotcom(ele):
-            data = dict.fromkeys(metadata)
+            data = HackData()
             #data from this source contains image as well, but presently images aren't supported here. Maybe later they will be.
             data['source'] = 'http://www.hackathon.com'
 

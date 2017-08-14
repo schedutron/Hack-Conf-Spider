@@ -74,3 +74,5 @@ This will create a "info.json" file in your working directory. Here's a sample o
     }
 ]
 ```
+Similarly, you can create a "info.csv" file by passing the filename to the `-o`
+option. This will, obviously, give a `.csv` format file.

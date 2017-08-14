@@ -1,14 +1,25 @@
 # -*- coding: utf-8 -*-
-
-# Define here the models for your scraped items
-#
-# See documentation in:
-# http://doc.scrapy.org/en/latest/topics/items.html
-
-import scrapy
+from scrapy import Field, Item
 
 
-class HackConfItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class HackData(Item):
+    title = Field()
+    subtitle = Field()
+    description = Field()
+    time = Field()
+    location = Field()
+    tags = Field()
+    source = Field()
+    link = Field()
+    prize = Field()
+    cost = Field()
+
+
+class ConfData(Item):
+    title = Field()
+    description = Field()
+    time = Field()
+    location = Field()
+    tags = Field()
+    source = Field()
+    link = Field()

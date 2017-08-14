@@ -1,5 +1,5 @@
 """Here are spider declarations for conference-info scraping."""
-from .conf_constants import *  # Gets metadata info.
+from hack_conf.items import ConfData  # Gets metadata info.
 from lxml import html
 import scrapy
 
@@ -18,7 +18,7 @@ class PapercallSpider(scrapy.Spider):
             Helper function to parse info passed by self.parse() method.
             Returns conference info in a JSON format.
             """
-            data = dict.fromkeys(metadata)
+            data = ConfData()
             data['source'] = 'https://www.papercall.io'
             # This gets the conference title.
             try:
@@ -103,7 +103,7 @@ class OreillySpider(scrapy.Spider):
             Returns conference info in a JSON format, like other helper parser
             functions.
             """
-            data = dict.fromkeys(metadata)
+            data = ConfData()
             data['source'] = 'https://www.oreilly.com/conferences/'
             # This gets the conference title.
             try:
@@ -164,7 +164,7 @@ class OpensourceSpider(scrapy.Spider):
             Returns conference info in a JSON format, like other parser
             functions.
             """
-            data = dict.fromkeys(metadata)
+            data = ConfData()
             data['source'] = "https://opensource.com/resources/"\
                 + "conferences-and-events-monthly"
             # This gets the conference title.
@@ -234,7 +234,7 @@ class LanyrdSpider(scrapy.Spider):
             Returns conferences' info in a JSON format, like other parser
             functions.
             """
-            data = dict.fromkeys(metadata)
+            data = ConfData()
             data['source'] = 'http://lanyrd.com/topics/open-source'
             # This gets the conference title.
             try:
