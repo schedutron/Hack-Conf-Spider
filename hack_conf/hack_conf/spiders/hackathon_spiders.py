@@ -107,3 +107,45 @@ class HackathonDotComSpider(scrapy.Spider):
         )
         while more_button:
             yield response.follow(more_button[0], callback=self.parse_final)
+
+
+class HackathonDotIoSpider(scrapy.Spider):
+    name = "hackathon_dot_io"
+    start_urls = ["http://www.hackathon.io"]
+
+    def parse(self, response):
+        def parse_hackathon_dot_io(ele):
+            data = HackData()
+            data['source'] = 'http://www.hackathon.io'
+            try:
+                data['time'] = ele.find('div', {'class': 'two columns time'})
+                data['time'] = data['time'].contents[2].strip()
+            except Exception as e:
+                print(e)
+            try:
+                data['link'] = data['source'] + ele.find('h4').contents[0]
+                data['link'] = data['link']['href']
+            except Exception as e:
+                print(e)
+            try:
+                data['title'] = ele.find('h4').contents[0].contents[0].strip()
+            except Exception as e:
+                print(e)
+            try:
+                data['subtitle'] = ele.find('h5').contents[0].contents[0]
+                data['subtitle'] = data['subtitle'].strip()
+            except Exception as e:
+                print(e)
+            try:
+                data['location'] = ele.find('div',
+                    {'class':'two columns location'}
+                    ).contents[1].contents[1].strip()
+            except Exception as e:
+                print(e)
+
+            return data
+
+        soup = BeautifulSoup(response.text, 'html.parser')
+        every = soup.find_all('div', {'class': 'event-teaser'})
+        for ele in every:
+            yield parse_hackathon_dot_io(ele)
