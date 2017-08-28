@@ -10,6 +10,8 @@ In place of `papercall`, `oreilly`, `opensource`, `lanyrd` and `linuxfoundation`
 [lanyrd.com](http://lanyrd.com/topics/open-source) and
 [linuxfoundation.org](http://events.linuxfoundation.org) has been implemented with Scrapy.)
 
+To scrape hackathons, use `hackathon_dot_com` and / or `hackathon_dot_io`.
+
 This will create a "info.json" file in your working directory. Here's a sample of it's contents (formatted for better readability):
 ```
 [
