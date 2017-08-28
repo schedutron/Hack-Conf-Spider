@@ -146,6 +146,13 @@ class HackathonDotIoSpider(scrapy.Spider):
             return data
 
         soup = BeautifulSoup(response.text, 'html.parser')
-        every = soup.find_all('div', {'class': 'event-teaser'})
+        container = soup.find('div', {'class': 'event-results'})
+        every = container.find_all('div', {'class': 'event-teaser'})
         for ele in every:
             yield parse_hackathon_dot_io(ele)
+        
+        more_button = response.xpath(
+            "//*[starts-with(@id, 'page_')]/a"
+        )
+        if more_button:
+            yield response.follow(more_button[0], callback=self.parse)
